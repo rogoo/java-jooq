@@ -50,6 +50,25 @@
          <artifactId>mysql-connector-j</artifactId>
          <version>9.2.0</version>
       </dependency>
+
+      <dependency>
+         <groupId>ch.qos.logback</groupId>
+         <artifactId>logback-classic</artifactId>
+         <version>1.5.18</version>
+         <scope>compile</scope>
+      </dependency>
+
+      <dependency>
+         <groupId>jakarta.persistence</groupId>
+         <artifactId>jakarta.persistence-api</artifactId>
+         <version>3.2.0</version>
+      </dependency>
+
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-lang3</artifactId>
+         <version>3.17.0</version>
+      </dependency>
    </dependencies>
 
    <build>
@@ -88,6 +107,10 @@
 
                <!-- Generator parameters -->
                <generator>
+                  <generate>
+                     <pojos>true</pojos>
+                     <daos>true</daos>
+                  </generate>
                   <database>
                      <name>org.jooq.meta.mysql.MySQLDatabase</name>
                      <includes>.*</includes>
@@ -95,8 +118,9 @@
                      <inputSchema>library</inputSchema>
                   </database>
                   <target>
-                     <packageName>br.rosa.rjooq</packageName>
-                     <directory>target/generated-sources/jooq</directory>
+                     <packageName>br.rosa.rjooq.generated</packageName>
+                     <directory>src/main/java</directory>
+                     <encoding>UTF-8</encoding>
                   </target>
                </generator>
             </configuration>
